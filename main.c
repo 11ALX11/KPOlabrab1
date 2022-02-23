@@ -1,5 +1,7 @@
 //https://codeforces.com/problemset/problem/479/A
 
+//conflict, main side
+
 #include <stdio.h>
 
 int max(int x, int y) {
