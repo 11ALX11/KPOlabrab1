@@ -1,21 +1,27 @@
-//https://codeforces.com/problemset/problem/577/A
+//https://codeforces.com/problemset/problem/479/A
 
 #include <stdio.h>
 
-int solveProblem(int n, int x) {
-    int k=0;
+int max(int x, int y) {
+    int rtn;
+    if (x>y) {rtn=x;} else {rtn=y;}
+    return rtn;
+}
 
-    for (int i=1; i<=n; i++) {
-        if (x%i == 0 && x/i <= n) k++;
-    }
+int solveProblem(int a, int b, int c) {
+    int ans1 = a + b + c;
+    int ans2 = a * b + c;
+    int ans3 = a + b * c;
+    int ans4 = a * (b + c);
+    int ans5 = (a + b) * c;
+    int ans6 = a * b * c;
 
-    return k;
+    return max(ans1, max(ans2, max(ans3, max(ans4, max(ans5, ans6)))));
 }
 
 int doCheck() {
-    if (solveProblem(10, 5) != 2) return 0;
-    if (solveProblem(6, 12) != 4) return 0;
-    if (solveProblem(5, 13) != 0) return 0;
+    if (solveProblem(1, 2, 3) != 9) return 0;
+    if (solveProblem(2, 10, 3) != 60) return 0;
     return 1;
 }
 
@@ -23,13 +29,13 @@ int main() {
 
     if (!doCheck()) return -1;
 
-    long int n, x, k=0;
+    int a, b, c;
 
-    scanf("%d %d", &n, &x);
+    scanf("%d %d %d", &a, &b, &c);
 
-    k=solveProblem(n, x);
+    int ans = solveProblem(a, b, c);
 
-    printf("%d", k);
+    printf("%d", ans);
 
     return 0;
 }
